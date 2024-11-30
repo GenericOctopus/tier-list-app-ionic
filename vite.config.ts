@@ -10,10 +10,5 @@ export default defineConfig({
     react(),
     legacy()
   ],
-  base: '/tier-list-app-ionic/',  // Add this line for GitHub Pages
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: './src/setupTests.ts',
-  }
+  base: '/tier-list-app-ionic/'  // Add this line for GitHub Pages
 })
