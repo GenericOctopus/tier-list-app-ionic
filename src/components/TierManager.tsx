@@ -12,7 +12,7 @@ import {
   IonItemOptions,
   IonItemOption,
 } from '@ionic/react';
-import { add, trash, colorPalette } from 'ionicons/icons';
+import { add, trash } from 'ionicons/icons';
 import { Tier } from '../types/TierTypes';
 
 interface Props {
@@ -56,6 +56,12 @@ const TierManager: React.FC<Props> = ({ tiers, onTiersChange }) => {
           <IonInput
             value={newTierLabel}
             onIonChange={e => setNewTierLabel(e.detail.value || '')}
+            enterkeyhint="enter"
+            onKeyUp={(e: any) => {
+              if (e.key === 'Enter') {
+                addTier();
+              }
+            }}
             placeholder="Enter tier label (e.g., S, A, B or 1, 2, 3)"
           />
           <IonButton slot="end" onClick={addTier}>

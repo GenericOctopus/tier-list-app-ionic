@@ -81,6 +81,24 @@ const ComparisonSort: React.FC<Props> = ({ items, onSortComplete, tierLabel }) =
     setProgress(completedComparisons / totalComparisons);
   };
 
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'ArrowLeft' || event.key === '1') {
+      handleChoice(currentComparison!.item1, currentComparison!.item2);
+    } else if (event.key === 'ArrowRight' || event.key === '2') {
+      handleChoice(currentComparison!.item2, currentComparison!.item1);
+    }
+  };
+
+  useEffect(() => {
+    // Add keyboard listener when component mounts
+    window.addEventListener('keydown', handleKeyDown);
+    
+    // Clean up listener when component unmounts
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [currentComparison]); // Re-add listener when comparison changes
+
   if (!currentComparison) {
     return (
       <IonCard>
