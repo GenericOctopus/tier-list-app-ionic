@@ -38,7 +38,7 @@ setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
-    <IonReactRouter>
+    <IonReactRouter basename="/tier-list-app-ionic">
       <IonRouterOutlet>
         <Route path="/" exact={true}>
           <Redirect to="/home" />
