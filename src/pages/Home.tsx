@@ -151,7 +151,15 @@ const Home: React.FC = () => {
           <IonTitle>Tier List Maker</IonTitle>
         </IonToolbar>
         <IonToolbar>
-          <IonSegment value={activeSegment} onIonChange={e => setActiveSegment(e.detail.value!)}>
+          <IonSegment 
+            value={activeSegment} 
+            onIonChange={(e: CustomEvent) => {
+              const newValue = e.detail.value as 'tiers' | 'items' | 'sort' | 'results';
+              if (newValue) {
+                setActiveSegment(newValue);
+              }
+            }}
+          >
             <IonSegmentButton value="tiers">
               <IonLabel>Define Tiers</IonLabel>
             </IonSegmentButton>
